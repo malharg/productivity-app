@@ -4,9 +4,7 @@ A simple mobile application built with React Native and Expo, based on the princ
 
 ## App Preview
 
-_It is highly recommended to add a screenshot or a short GIF of your app in action here! A visual preview makes a huge difference._
-
-![App Screenshot Placeholder](https://via.placeholder.com/300x600.png?text=Add+App+Screenshot+Here)
+![HomeScreen](screenss.png)
 
 ## Core Features
 
