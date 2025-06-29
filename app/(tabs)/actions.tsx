@@ -1,4 +1,3 @@
-// app/(tabs)/actions.tsx
 import React, { useState, useMemo } from 'react';
 import { View, Text, StyleSheet, FlatList, SafeAreaView, TouchableOpacity, Button } from 'react-native';
 import { useData } from '../../src/hooks/useData';

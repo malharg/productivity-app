@@ -1,4 +1,3 @@
-// app/(tabs)/inbox.tsx
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useData } from '../../src/hooks/useData';

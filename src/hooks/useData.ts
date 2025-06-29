@@ -1,4 +1,3 @@
-// src/hooks/useData.ts
 import { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 

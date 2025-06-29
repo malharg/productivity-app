@@ -1,50 +1,104 @@
-# Welcome to your Expo app 👋
+# Personal Productivity App (GTD)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple mobile application built with React Native and Expo, based on the principles of the "Getting Things Done" (GTD) methodology. This app helps you capture, process, and engage with your tasks efficiently.
 
-## Get started
+## App Preview
 
-1. Install dependencies
+_It is highly recommended to add a screenshot or a short GIF of your app in action here! A visual preview makes a huge difference._
 
-   ```bash
-   npm install
-   ```
+![App Screenshot Placeholder](https://via.placeholder.com/300x600.png?text=Add+App+Screenshot+Here)
 
-2. Start the app
+## Core Features
 
-   ```bash
-   npx expo start
-   ```
+*   **Capture:** A dedicated **Inbox** screen to quickly jot down any task, idea, or to-do item that comes to mind.
+*   **Process & Organize:**
+    *   Process items from the Inbox to define them as a **Next Action**.
+    *   Create new **Projects** on the fly.
+    *   Assign a **Context** (e.g., `@computer`, `@home`) to any Next Action.
+*   **Engage:**
+    *   View all your **Next Actions** in one place.
+    *   Filter your actions by their assigned Context or Project to focus on what you can do now.
+    *   Mark tasks as **complete** to clear them from your action list.
+*   **Data Persistence:** Your data is saved locally on your device, so your tasks are always there when you reopen the app.
 
-In the output, you'll find options to open the app in a
+## Tech Stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+*   **Framework:** React Native with Expo
+*   **Language:** TypeScript
+*   **Navigation:** Expo Router (File-based routing)
+*   **State Management:** React Context API
+*   **Local Storage:** AsyncStorage
+*   **UI Components:** `react-native-dropdown-picker` for a consistent cross-platform dropdown experience.
+*   **Unique IDs:** `uuid` library for generating unique identifiers for tasks and projects.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Getting Started
 
-## Get a fresh project
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing.
 
-When you're ready, run:
+### Prerequisites
 
-```bash
-npm run reset-project
+Before you begin, ensure you have the following installed on your system:
+
+*   [Node.js](https://nodejs.org/) (LTS version recommended)
+*   [Git](https://git-scm.com/)
+*   The **Expo Go** app on your iOS or Android device.
+    *   [Download for iOS (App Store)](https://apps.apple.com/us/app/expo-go/id982107779)
+    *   [Download for Android (Play Store)](https://play.google.com/store/apps/details?id=host.exp.exponent)
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    Open your terminal and run the following command to clone the project.
+    ```bash
+    git clone https://github.com/malharg/productivity-app.git
+    ```
+
+2.  **Navigate to the project directory:**
+    ```bash
+    cd productivity-app
+    ```
+
+3.  **Install dependencies:**
+    Use `npm` to install all the required packages for the project.
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+1.  **Start the development server:**
+    Once the dependencies are installed, run the following command to start the Expo development server.
+    ```bash
+    npx expo start
+    ```
+
+2.  **Open the app on your phone:**
+    The command will start a new process in your terminal and display a QR code.
+
+    *   **On iOS:** Open the default Camera app and point it at the QR code. A notification will appear to open the project in Expo Go.
+    *   **On Android:** Open the Expo Go app and tap "Scan QR Code". Point your camera at the QR code in your terminal.
+
+The app will now be running on your device, and you can start testing. Any changes you make to the code will automatically reload the app.
+
+## Project Structure
+
+The project code is organized to be clean and maintainable:
+
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+productivity-app/
+├── app/                  # Contains all screens and navigation logic (Expo Router)
+│   ├── (tabs)/           # Layout group for the main tab bar
+│   │   ├── _layout.tsx   # Configuration for the tab navigator
+│   │   ├── index.tsx     # The default "Inbox" screen
+│   │   ├── actions.tsx   # The "Next Actions" screen
+│   │   └── projects.tsx  # The "Projects" screen
+│   ├── _layout.tsx       # Root layout of the app
+│   └── process-task.tsx  # Screen for processing an individual task
+│
+├── src/                  # Main source code directory
+│   ├── components/       # Reusable UI components (e.g., TaskInput)
+│   ├── context/          # Contains the DataContext for state management
+│   └── hooks/            # Custom hooks (e.g., useData)
+│
+└── README.md             # This file
+```

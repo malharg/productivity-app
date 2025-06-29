@@ -1,4 +1,3 @@
-// src/components/TaskInput.tsx
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Keyboard } from 'react-native';
 

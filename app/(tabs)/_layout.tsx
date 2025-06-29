@@ -1,4 +1,3 @@
-// app/(tabs)/_layout.tsx
 import { Tabs } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -19,9 +18,8 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="tasks" color={color} />,
         }}
       />
-      {/* Add the new tab here */}
       <Tabs.Screen
-        name="projects" // This corresponds to projects.tsx
+        name="projects" 
         options={{
           title: 'Projects',
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="briefcase" color={color} />,

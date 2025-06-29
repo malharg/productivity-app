@@ -1,4 +1,3 @@
-// app/(tabs)/projects.tsx
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import { useData } from '../../src/hooks/useData';
