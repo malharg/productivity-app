@@ -40,6 +40,7 @@ interface DataContextValue {
       contextId: string | null;
     }
   ) => void;
+  completeTask: (taskId: string) => void;
   // We will add more functions here
 }
 
@@ -142,6 +143,14 @@ export const DataProvider = ({ children }: DataProviderProps) => {
     );
   };
 
+  const completeTask = (taskId: string) => {
+    setTasks(
+      tasks.map(task =>
+        task.id === taskId ? { ...task, isComplete: true, status: 'done' } : task
+      )
+    );
+  };
+
   const value = {
     tasks,
     projects,
@@ -150,6 +159,7 @@ export const DataProvider = ({ children }: DataProviderProps) => {
     addTask,
     addProject,   
     processTask,
+    completeTask,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
