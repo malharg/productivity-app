@@ -31,6 +31,15 @@ interface DataContextValue {
   contexts: AppContext[];
   isLoading: boolean;
   addTask: (title: string) => void;
+  addProject: (projectName: string) => Project;
+  processTask: (
+    taskId: string,
+    action: {
+      status: 'next-action';
+      projectId: string | null;
+      contextId: string | null;
+    }
+  ) => void;
   // We will add more functions here
 }
 
@@ -102,12 +111,45 @@ export const DataProvider = ({ children }: DataProviderProps) => {
     setTasks([...tasks, newTask]);
   };
 
+  const addProject = (projectName: string): Project => {
+    const newProject: Project = {
+      id: uuidv4(),
+      name: projectName,
+    };
+    setProjects([...projects, newProject]);
+    return newProject;
+  };
+
+  const processTask = (
+    taskId: string,
+    action: {
+      status: 'next-action';
+      projectId: string | null;
+      contextId: string | null;
+    }
+  ) => {
+    setTasks(
+      tasks.map(task =>
+        task.id === taskId
+          ? {
+              ...task,
+              status: action.status,
+              projectId: action.projectId,
+              contextId: action.contextId,
+            }
+          : task
+      )
+    );
+  };
+
   const value = {
     tasks,
     projects,
     contexts,
     isLoading,
     addTask,
+    addProject,   
+    processTask,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

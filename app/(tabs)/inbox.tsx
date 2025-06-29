@@ -1,15 +1,24 @@
 // app/(tabs)/inbox.tsx
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useData } from '../../src/hooks/useData';
 import TaskInput from '../../src/components/TaskInput';
-import { Task } from '../../src/context/DataContext';
+import { useRouter } from 'expo-router'; // Import useRouter instead of Link
+
 
 export default function InboxScreen() {
   const { tasks, addTask, isLoading } = useData();
+  const router = useRouter();
 
   // Filter tasks to only show those in the 'inbox'
   const inboxTasks = tasks.filter(task => task.status === 'inbox');
+
+  const handleTaskPress = (taskId: string) => {
+    router.push({
+      pathname: '/process-task' as any,
+      params: { taskId }
+    });
+  };
 
   if (isLoading) {
     return (
@@ -26,9 +35,12 @@ export default function InboxScreen() {
           data={inboxTasks}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View style={styles.taskItem}>
-              <Text style={styles.taskTitle}>{item.title}</Text>
-            </View>
+            // Wrap the task item in a Link component
+            <TouchableOpacity onPress={() => handleTaskPress(item.id)}>
+              <View style={styles.taskItem}>
+                <Text style={styles.taskTitle}>{item.title}</Text>
+              </View>
+            </TouchableOpacity>
           )}
           ListEmptyComponent={<View style={styles.emptyContainer}><Text>Inbox is clear!</Text></View>}
           contentContainerStyle={{ flexGrow: 1 }}
